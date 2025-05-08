@@ -46,4 +46,7 @@ test('postcall with dynmic data', async ({request})=>
   // * now making a get call and storing in the variable:
   const getApiCall= await request.get(`booking/${myBookingId}`)
   console.log(await getApiCall.json());  //! printing the json response:
+  //? now validate the status ode for get call:
+  await expect(getApiCall.ok).toBeTruthy();
+  await expect.soft(getApiCall.status()).toBe(500);
 })
